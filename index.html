@@ -150,20 +150,6 @@
       color: #fff;
       border-color: #fff;
     }
-    #ageGate .reset-link {
-      margin-top: 1.5rem;
-      color: #666;
-      font-size: 0.7rem;
-      cursor: pointer;
-      text-decoration: underline;
-      background: transparent;
-      border: none;
-      font-family: 'Kaisei Decol', sans-serif;
-      transition: 0.2s;
-    }
-    #ageGate .reset-link:hover {
-      color: #ff007f;
-    }
 
     /* --- HEADER --- */
     header {
@@ -963,8 +949,6 @@
     <p>⚠️ MATURE MANGA CLUB ⚠️</p>
     <button class="btn-age" id="ageConfirm">I AM 21+ • ENTER</button>
     <button class="btn-no" id="ageDeny">I am under 21 (Leave)</button>
-    <!-- Reset link to clear saved age verification -->
-    <button class="reset-link" id="resetAgeBtn">↻ Reset Age Gate (clear saved choice)</button>
   </div>
 
   <!-- ========== APP ========== -->
@@ -1260,8 +1244,6 @@
       const m = findMember(u);
       return m ? m.subscribed === true : false;
     }
-
-    function isAgeVerified() { return localStorage.getItem('ageVerified') === 'true'; }
 
     function addNotification(msg) {
       const notifs = getNotifications();
@@ -1946,33 +1928,38 @@
       });
     });
 
-    // --- Reset Age Gate ---
-    document.getElementById('resetAgeBtn').addEventListener('click', function() {
+    // ================================================================
+    //  AGE GATE – FORCED TO APPEAR EVERY TIME
+    // ================================================================
+
+    // On page load, ensure the age gate is always shown.
+    // We do this by removing the 'hidden' class from the gate and
+    // removing the 'visible' class from the app.
+    document.addEventListener('DOMContentLoaded', function() {
+      const gate = document.getElementById('ageGate');
+      const app = document.getElementById('mainApp');
+      gate.classList.remove('hidden');
+      app.classList.remove('visible');
+      // Remove any stale localStorage just to be safe
       localStorage.removeItem('ageVerified');
-      location.reload();
     });
 
-    // --- AGE GATE ---
+    // --- Enter button ---
     document.getElementById('ageConfirm').addEventListener('click', function() {
-      localStorage.setItem('ageVerified', 'true');
+      // Hide the gate and show the app for this session
       document.getElementById('ageGate').classList.add('hidden');
       document.getElementById('mainApp').classList.add('visible');
-      renderAll();
+      // DO NOT save anything – on reload the gate will be back
+      renderAll(); // render the app content
     });
+
+    // --- Deny button ---
     document.getElementById('ageDeny').addEventListener('click', function() {
       document.body.innerHTML =
         '<div style="text-align:center;padding:4rem;color:#ff007f;font-size:3rem;font-family:\'Yusei Magic\',sans-serif;">🔞 ACCESS DENIED<br><span style="font-size:1rem;color:#666;">You must be 21+ to enter this site.</span></div>';
     });
 
-    // --- Init ---
-    if (isAgeVerified()) {
-      document.getElementById('ageGate').classList.add('hidden');
-      document.getElementById('mainApp').classList.add('visible');
-      renderAll();
-    } else {
-      document.getElementById('ageGate').classList.remove('hidden');
-      document.getElementById('mainApp').classList.remove('visible');
-    }
+    // --- No extra init check – always show gate ---
   </script>
 </body>
 </html>

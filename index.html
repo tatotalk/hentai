@@ -150,6 +150,20 @@
       color: #fff;
       border-color: #fff;
     }
+    #ageGate .reset-link {
+      margin-top: 1.5rem;
+      color: #666;
+      font-size: 0.7rem;
+      cursor: pointer;
+      text-decoration: underline;
+      background: transparent;
+      border: none;
+      font-family: 'Kaisei Decol', sans-serif;
+      transition: 0.2s;
+    }
+    #ageGate .reset-link:hover {
+      color: #ff007f;
+    }
 
     /* --- HEADER --- */
     header {
@@ -949,6 +963,8 @@
     <p>⚠️ MATURE MANGA CLUB ⚠️</p>
     <button class="btn-age" id="ageConfirm">I AM 21+ • ENTER</button>
     <button class="btn-no" id="ageDeny">I am under 21 (Leave)</button>
+    <!-- Reset link to clear saved age verification -->
+    <button class="reset-link" id="resetAgeBtn">↻ Reset Age Gate (clear saved choice)</button>
   </div>
 
   <!-- ========== APP ========== -->
@@ -1928,6 +1944,12 @@
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('page-' + page).classList.add('active');
       });
+    });
+
+    // --- Reset Age Gate ---
+    document.getElementById('resetAgeBtn').addEventListener('click', function() {
+      localStorage.removeItem('ageVerified');
+      location.reload();
     });
 
     // --- AGE GATE ---

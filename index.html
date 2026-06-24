@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔞 21+ Manga Club – Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Kaisei+Decol:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Kaisei Decol', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 1.5rem;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(90deg,
+          transparent 0px,
+          rgba(255, 255, 255, 0.02) 2px,
+          transparent 4px,
+          transparent 30px);
+      background-size: 60px 100%;
+      animation: speedLines 8s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes speedLines {
+      0% { background-position: 0 0; }
+      100% { background-position: 60px 0; }
+    }
+    .app {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* --- AGE GATE --- */
+    #ageGate {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      background-image: radial-gradient(circle at 20% 30%, #1a0a0a, #000000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      border: 8px solid #ff007f;
+      box-shadow: inset 0 0 100px #ff007f40;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+    #ageGate.hidden {
+      display: none;
+    }
+    #ageGate h1 {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 4.5rem;
+      color: #ff007f;
+      text-shadow: 0 0 30px #ff007f, 0 0 60px #ff007f;
+      letter-spacing: 8px;
+      border: 6px solid #ff007f;
+      padding: 0.2rem 2rem;
+      transform: rotate(-2deg);
+      margin-bottom: 1rem;
+      background: #000;
+    }
+    #ageGate p {
+      font-size: 1.8rem;
+      color: #ffe600;
+      text-shadow: 0 0 20px #ffe600;
+      margin-bottom: 2rem;
+    }
+    #ageGate .btn-age {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 2rem;
+      padding: 1rem 4rem;
+      background: #ff007f;
+      color: #fff;
+      border: 6px solid #fff;
+      box-shadow: 0 0 40px #ff007f;
+      cursor: pointer;
+      transition: 0.15s;
+      text-transform: uppercase;
+      animation: pulseGlow 1.5s infinite;
+    }
+    #ageGate .btn-age:hover {
+      transform: scale(1.1);
+      background: #ffe600;
+      color: #000;
+      border-color: #000;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px #ff007f; }
+      50% { box-shadow: 0 0 60px #ff007f, 0 0 120px #ff007f; }
+      100% { box-shadow: 0 0 20px #ff007f; }
+    }
+    #ageGate .btn-no {
+      margin-top: 1rem;
+      background: transparent;
+      color: #666;
+      border: 2px solid #666;
+      padding: 0.5rem 2rem;
+      font-family: 'Kaisei Decol', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #ageGate .btn-no:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    /* --- HEADER --- */
+    header {
+      background: #111;
+      border: 6px solid #ff007f;
+      padding: 0.8rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 0 40px #ff007f40;
+      position: relative;
+      gap: 0.5rem;
+    }
+    header::after {
+      content: "🔞 EXPLICIT";
+      position: absolute;
+      bottom: -18px;
+      right: 30px;
+      background: #ffe600;
+      color: #000;
+      font-weight: 900;
+      padding: 0 1.5rem;
+      border: 4px solid #000;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      font-family: 'Yusei Magic', sans-serif;
+      box-shadow: 0 0 20px #ffe600;
+    }
+    .logo {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: #000;
+      color: #ff007f;
+      padding: 0.2rem 1.2rem;
+      border: 4px solid #ffe600;
+      box-shadow: 0 0 30px #ff007f;
+      letter-spacing: 1px;
+      transform: rotate(-1deg);
+      text-shadow: 0 0 20px #ff007f;
+    }
+    .logo span {
+      color: #ffe600;
+    }
+
+    .header-center {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      justify-content: center;
+    }
+    .header-center input {
+      padding: 0.4rem 0.8rem;
+      border: 3px solid #444;
+      background: #222;
+      color: #fff;
+      font-family: 'Kaisei Decol', sans-serif;
+      font-size: 0.8rem;
+      width: 200px;
+      max-width: 100%;
+    }
+    .header-center input:focus {
+      border-color: #ff007f;
+      outline: none;
+    }
+    .header-center .btn-sm {
+      padding: 0.3rem 1rem;
+      font-size: 0.7rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+    nav button {
+      font-family: 'Yusei Magic', sans-serif;
+      background: #222;
+      border: 3px solid #444;
+      padding: 0.5rem 1rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #aaa;
+      cursor: pointer;
+      transition: 0.15s;
+      text-transform: uppercase;
+    }
+    nav button:hover {
+      background: #333;
+      border-color: #ff007f;
+      color: #fff;
+    }
+    nav button.active {
+      background: #ff007f;
+      color: #fff;
+      border-color: #ffe600;
+      box-shadow: 0 0 30px #ff007f;
+    }
+    nav button.locked {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #222;
+      border: 4px solid #ffe600;
+      padding: 0.2rem 0.8rem 0.2rem 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 0 20px #ffe60040;
+    }
+    .user-badge span {
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    .user-badge button {
+      font-family: 'Yusei Magic', sans-serif;
+      background: #ff007f;
+      color: #fff;
+      border: none;
+      padding: 0.2rem 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid #fff;
+      transition: 0.1s;
+      font-size: 0.8rem;
+    }
+    .user-badge button:hover {
+      background: #ffe600;
+      color: #000;
+      border-color: #000;
+    }
+    .notif-bell {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.4rem;
+      background: none;
+      border: none;
+      color: #fff;
+      transition: 0.2s;
+    }
+    .notif-bell:hover {
+      color: #ff007f;
+      transform: scale(1.1);
+    }
+    .notif-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: #ff007f;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.6rem;
+      padding: 0.1rem 0.4rem;
+      font-weight: 900;
+      border: 2px solid #fff;
+      min-width: 18px;
+      text-align: center;
+    }
+    .notif-dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: #1a1a1a;
+      border: 4px solid #ff007f;
+      min-width: 280px;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 0.5rem;
+      z-index: 100;
+      box-shadow: 0 0 60px #ff007f40;
+      display: none;
+    }
+    .notif-dropdown.open {
+      display: block;
+    }
+    .notif-dropdown .notif-item {
+      padding: 0.5rem;
+      border-bottom: 1px solid #333;
+      font-size: 0.8rem;
+      color: #ddd;
+    }
+    .notif-dropdown .notif-item:last-child {
+      border-bottom: none;
+    }
+    .notif-dropdown .notif-item .notif-time {
+      color: #666;
+      font-size: 0.6rem;
+    }
+
+    /* --- PAGES --- */
+    .page {
+      display: none;
+      animation: mangaFade 0.4s ease;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes mangaFade {
+      0% {
+        opacity: 0;
+        transform: scale(0.95) rotate(-1deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    /* --- CARDS --- */
+    .card {
+      background: #151515;
+      border: 6px solid #333;
+      border-radius: 0px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 10px 10px 0px #000;
+      position: relative;
+      transition: 0.2s;
+    }
+    .card:hover {
+      border-color: #ff007f;
+      box-shadow: 0 0 40px #ff007f20;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      background: repeating-linear-gradient(45deg, #ff007f20, #ff007f20 8px, transparent 8px, transparent 16px);
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+    .card h2 {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      border-bottom: 6px solid #ff007f;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      background: #000;
+      color: #ffe600;
+      padding: 0 1rem 0.3rem 1rem;
+      text-shadow: 0 0 20px #ffe600;
+      letter-spacing: 2px;
+    }
+    .card .lock-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      border: 4px dashed #ff007f;
+    }
+    .card .lock-overlay h3 {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 2.5rem;
+      color: #ff007f;
+      text-shadow: 0 0 40px #ff007f;
+    }
+    .card .lock-overlay p {
+      color: #ffe600;
+      font-size: 1.2rem;
+    }
+
+    /* --- GRID --- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+    }
+    .stat-box {
+      background: #1a1a1a;
+      border: 5px solid #ffe600;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 0 30px #ffe60020;
+      text-align: center;
+      transition: 0.2s;
+    }
+    .stat-box:hover {
+      border-color: #ff007f;
+      box-shadow: 0 0 50px #ff007f40;
+    }
+    .stat-box h3 {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 2.4rem;
+      color: #ff007f;
+      text-shadow: 0 0 30px #ff007f;
+    }
+    .stat-box p {
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      background: #000;
+      color: #ffe600;
+      padding: 0.2rem;
+      border: 2px solid #ffe600;
+    }
+
+    /* --- FORMS --- */
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border: 4px solid #333;
+      border-radius: 0px;
+      font-size: 0.95rem;
+      font-family: 'Kaisei Decol', sans-serif;
+      background: #222;
+      color: #fff;
+      box-shadow: 4px 4px 0px #000;
+      transition: 0.1s;
+    }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      background: #111;
+      border-color: #ff007f;
+      box-shadow: 0 0 30px #ff007f40;
+    }
+    input:disabled,
+    textarea:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn {
+      font-family: 'Yusei Magic', sans-serif;
+      background: #ff007f;
+      color: #fff;
+      border: 4px solid #fff;
+      padding: 0.6rem 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff007f;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: 0.15s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: #ffe600;
+      color: #000;
+      border-color: #000;
+      box-shadow: 0 0 40px #ffe600;
+    }
+    .btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    .btn-secondary {
+      background: #333;
+      box-shadow: 0 0 10px #333;
+      border-color: #666;
+    }
+    .btn-secondary:hover {
+      background: #555;
+      border-color: #fff;
+    }
+    .btn-success {
+      background: #00b894;
+      border-color: #00b894;
+      box-shadow: 0 0 20px #00b894;
+    }
+    .btn-success:hover {
+      background: #ffe600;
+      border-color: #000;
+      color: #000;
+    }
+    .btn-danger {
+      background: #d63031;
+      border-color: #d63031;
+      box-shadow: 0 0 20px #d63031;
+    }
+    .btn-danger:hover {
+      background: #fff;
+      color: #d63031;
+      border-color: #d63031;
+    }
+    .btn-sm {
+      padding: 0.3rem 1rem;
+      font-size: 0.7rem;
+    }
+
+    .flex {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .mt-1 {
+      margin-top: 1.2rem;
+    }
+    .mb-1 {
+      margin-bottom: 1rem;
+    }
+    .text-muted {
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    /* --- LISTS --- */
+    .item-list {
+      list-style: none;
+      padding: 0;
+    }
+    .item-list li {
+      background: #1a1a1a;
+      border: 4px solid #333;
+      padding: 0.6rem 1.2rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 4px 4px 0px #000;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .item-list li:hover {
+      border-color: #ff007f;
+    }
+    .item-list li .meta {
+      font-size: 0.8rem;
+      color: #aaa;
+      background: #000;
+      padding: 0 0.5rem;
+      border: 2px solid #333;
+    }
+    .item-list li .small-actions {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: #000;
+      color: #fff;
+      padding: 0.1rem 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border: 2px solid #ff007f;
+      font-family: 'Yusei Magic', sans-serif;
+    }
+    .tag.paid {
+      background: #00b894;
+      color: #fff;
+      border-color: #00b894;
+    }
+    .tag.free {
+      background: #d63031;
+      color: #fff;
+      border-color: #d63031;
+    }
+    .tag.gold {
+      background: #ffe600;
+      color: #000;
+      border-color: #ffe600;
+    }
+
+    /* --- PROGRESS BAR --- */
+    .progress-wrap {
+      width: 100%;
+      background: #222;
+      border: 3px solid #333;
+      margin: 0.2rem 0;
+      height: 12px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #ff007f;
+      transition: width 0.3s;
+      box-shadow: 0 0 20px #ff007f;
+    }
+
+    /* --- POSTS WITH REPLIES --- */
+    .post {
+      background: #1a1a1a;
+      border: 4px solid #333;
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 0.6rem;
+      box-shadow: 4px 4px 0px #000;
+      position: relative;
+    }
+    .post::before {
+      content: "💬";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      font-size: 1.2rem;
+      background: #ff007f;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px #ff007f;
+    }
+    .post .author {
+      font-weight: 900;
+      color: #ffe600;
+      font-family: 'Yusei Magic', sans-serif;
+      text-shadow: 0 0 20px #ffe600;
+      cursor: pointer;
+    }
+    .post .author:hover {
+      color: #ff007f;
+    }
+    .post .time {
+      font-size: 0.7rem;
+      background: #000;
+      color: #aaa;
+      padding: 0.1rem 0.6rem;
+      margin-left: 0.6rem;
+      border: 2px solid #333;
+    }
+    .post .content {
+      margin-top: 0.3rem;
+      padding-left: 0.8rem;
+      border-left: 4px solid #ff007f;
+      color: #ddd;
+    }
+    .post .post-actions {
+      margin-top: 0.4rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .post .post-actions button {
+      background: none;
+      border: none;
+      color: #888;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: 'Kaisei Decol', sans-serif;
+      transition: 0.15s;
+    }
+    .post .post-actions button:hover {
+      color: #ff007f;
+    }
+    .replies {
+      margin-left: 2rem;
+      margin-top: 0.5rem;
+      border-left: 3px solid #333;
+      padding-left: 0.8rem;
+    }
+    .reply {
+      background: #111;
+      border: 2px solid #333;
+      padding: 0.5rem 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+    .reply .author {
+      font-weight: 900;
+      color: #ff007f;
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 0.8rem;
+    }
+    .reply .content {
+      font-size: 0.85rem;
+      border-left: 3px solid #ff007f;
+      padding-left: 0.6rem;
+      margin-top: 0.1rem;
+    }
+    .reply .time {
+      font-size: 0.6rem;
+      color: #666;
+    }
+
+    /* --- RATING STARS --- */
+    .stars {
+      display: inline-flex;
+      gap: 0.1rem;
+    }
+    .stars .star {
+      color: #555;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .stars .star.active {
+      color: #ffe600;
+      text-shadow: 0 0 20px #ffe600;
+    }
+    .stars .star:hover {
+      transform: scale(1.2);
+    }
+
+    /* --- MODAL --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal {
+      background: #151515;
+      max-width: 500px;
+      width: 90%;
+      padding: 2rem;
+      border: 8px solid #ff007f;
+      box-shadow: 0 0 80px #ff007f;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal .close {
+      float: right;
+      background: #ff007f;
+      color: #fff;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0 0.6rem;
+      line-height: 1;
+    }
+    .modal .close:hover {
+      background: #ffe600;
+      color: #000;
+    }
+
+    /* --- BANNER --- */
+    .premium-banner {
+      background: #1a0a0a;
+      border: 6px solid #ffe600;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 60px #ffe60020;
+      animation: pulseGlow 3s infinite;
+    }
+    .premium-banner h2 {
+      font-size: 2.2rem;
+      color: #ff007f;
+      text-shadow: 0 0 40px #ff007f;
+      font-family: 'Yusei Magic', sans-serif;
+    }
+    .premium-banner p {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    /* --- FEATURED IMAGE --- */
+    .featured-manga {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: #111;
+      border: 6px solid #ff007f;
+      box-shadow: 0 0 60px #ff007f40;
+      text-align: center;
+    }
+    .featured-manga h3 {
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 1.8rem;
+      color: #ffe600;
+      text-shadow: 0 0 30px #ffe600;
+      margin-bottom: 1rem;
+      border-bottom: 4px solid #ff007f;
+      display: inline-block;
+      padding: 0 2rem;
+    }
+    .featured-manga img {
+      max-width: 100%;
+      max-height: 400px;
+      border: 6px solid #fff;
+      box-shadow: 0 0 60px #ff007f;
+      transition: 0.3s;
+    }
+    .featured-manga img:hover {
+      transform: scale(1.02);
+      border-color: #ffe600;
+    }
+    .featured-manga .explicit-tag {
+      display: inline-block;
+      background: #ff007f;
+      color: #fff;
+      padding: 0.2rem 2rem;
+      font-weight: 900;
+      border: 4px solid #fff;
+      margin-top: 0.8rem;
+      font-family: 'Yusei Magic', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 4px;
+    }
+
+    /* --- ADMIN DASHBOARD --- */
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .admin-stat {
+      background: #1a1a1a;
+      border: 4px solid #333;
+      padding: 1rem;
+      text-align: center;
+    }
+    .admin-stat h4 {
+      font-family: 'Yusei Magic', sans-serif;
+      color: #ffe600;
+      font-size: 1.2rem;
+    }
+    .admin-stat .num {
+      font-size: 2.5rem;
+      color: #ff007f;
+      text-shadow: 0 0 30px #ff007f;
+    }
+
+    /* --- PayPal container --- */
+    #paypal-button-container-P-4SJ899847P047893RNIY3KHI {
+      min-height: 150px;
+      margin: 1rem 0;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+      }
+      nav {
+        justify-content: center;
+      }
+      .user-badge {
+        justify-content: center;
+      }
+      .logo {
+        text-align: center;
+        font-size: 1.4rem;
+      }
+      #ageGate h1 {
+        font-size: 2.5rem;
+      }
+      .header-center input {
+        width: 140px;
+      }
+      .card {
+        padding: 1rem;
+      }
+      .featured-manga img {
+        max-height: 250px;
+      }
+      .replies {
+        margin-left: 0.5rem;
+        padding-left: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== AGE GATE ========== -->
+  <div id="ageGate">
+    <h1>🔞 21+</h1>
+    <p>⚠️ MATURE MANGA CLUB ⚠️</p>
+    <button class="btn-age" id="ageConfirm">I AM 21+ • ENTER</button>
+    <button class="btn-no" id="ageDeny">I am under 21 (Leave)</button>
+  </div>
+
+  <!-- ========== APP ========== -->
+  <div class="app" id="mainApp">
+
+    <!-- HEADER -->
+    <header>
+      <div class="logo">🔞 Manga<span>Club</span></div>
+      <div class="header-center">
+        <input type="text" id="searchInput" placeholder="🔍 Search books, posts..." />
+        <button class="btn btn-sm" id="searchBtn">Go</button>
+        <button class="notif-bell" id="notifBell">🔔<span class="notif-badge" id="notifCount">0</span>
+          <div class="notif-dropdown" id="notifDropdown"></div>
+        </button>
+      </div>
+      <nav id="mainNav">
+        <button class="active" data-page="home">🏠 Home</button>
+        <button data-page="subscribe" id="navSubscribe">⭐ Subscribe</button>
+        <button data-page="books" class="locked" id="navBooks">📚 Volumes</button>
+        <button data-page="meetings" class="locked" id="navMeetings">🗓️ Readings</button>
+        <button data-page="community" class="locked" id="navCommunity">💬 Discussion</button>
+        <button data-page="members" class="locked" id="navMembers">👥 Crew</button>
+        <button data-page="admin" class="locked" id="navAdmin">👑 Admin</button>
+      </nav>
+      <div class="user-badge">
+        <span id="userDisplay">Guest</span>
+        <button id="loginToggle">Login</button>
+      </div>
+    </header>
+
+    <!-- ========== PAGES ========== -->
+
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="premium-banner">
+        <h2>🔞 ADULTS ONLY • PREMIUM MANGA CLUB</h2>
+        <p>Subscribe to unlock voting, RSVP, discussions, and full crew access.</p>
+        <button class="btn" onclick="document.getElementById('navSubscribe').click()">⭐ SUBSCRIBE NOW</button>
+      </div>
+
+      <div class="card">
+        <h2>🔥 Club Stats</h2>
+        <div class="grid-2 mt-1">
+          <div class="stat-box"><h3 id="statMembers">0</h3><p>Members</p></div>
+          <div class="stat-box"><h3 id="statBooks">0</h3><p>Volumes</p></div>
+          <div class="stat-box"><h3 id="statMeetings">0</h3><p>Readings</p></div>
+          <div class="stat-box"><h3 id="statPosts">0</h3><p>Hot Takes</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📖 Featured Manga Spotlight</h2>
+        <p style="color:#aaa;">The club's current obsession. Subscribe to join the discussion.</p>
+        <ul class="item-list" id="homeBookPreview"></ul>
+      </div>
+
+      <div class="featured-manga">
+        <h3>🔥 MATURE MANGA SPOTLIGHT</h3>
+        <img src="https://64.media.tumblr.com/d3da0c05015918d186e23fb171b5a59e/c5efdc24d2be5c64-cc/s2048x3072/2252dfb3348cabee5644bea9340b37f18ddf1abe.jpg" alt="Mature Manga Cover" />
+        <div class="explicit-tag">🔞 EXPLICIT CONTENT 🔞</div>
+        <p style="margin-top: 1rem; color: #aaa;">Volume 1 • Collector's Edition • 21+ Only</p>
+      </div>
+    </section>
+
+    <!-- BOOKS -->
+    <section id="page-books" class="page">
+      <div class="card" style="position:relative;">
+        <div class="lock-overlay"><h3>🔒 LOCKED</h3><p>Subscribe to access the manga library and vote.</p></div>
+        <h2>📖 Manga Library</h2>
+        <div class="flex">
+          <input type="text" id="bookTitle" placeholder="Manga Title" style="flex:2;" disabled />
+          <input type="text" id="bookAuthor" placeholder="Mangaka" style="flex:1;" disabled />
+          <input type="number" id="bookChapters" placeholder="Chapters" style="flex:0.8;" disabled />
+          <button class="btn" id="addBookBtn" disabled>➕ Add</button>
+        </div>
+        <div id="bookListContainer">
+          <ul class="item-list" id="bookList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEETINGS -->
+    <section id="page-meetings" class="page">
+      <div class="card" style="position:relative;">
+        <div class="lock-overlay"><h3>🔒 LOCKED</h3><p>Subscribe to RSVP for reading sessions.</p></div>
+        <h2>🗓️ Reading Sessions</h2>
+        <div class="flex">
+          <input type="text" id="meetingTitle" placeholder="Session" style="flex:2;" disabled />
+          <input type="datetime-local" id="meetingTime" style="flex:1;" disabled />
+          <button class="btn" id="addMeetingBtn" disabled>➕ Schedule</button>
+        </div>
+        <ul class="item-list" id="meetingList"></ul>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="page-community" class="page">
+      <div class="card" style="position:relative;">
+        <div class="lock-overlay"><h3>🔒 LOCKED</h3><p>Subscribe to post hot takes and join the discussion.</p></div>
+        <h2>💬 Discussion</h2>
+        <div class="flex">
+          <input type="text" id="postContent" placeholder="What's your hot take?" style="flex:3;" disabled />
+          <button class="btn" id="addPostBtn" disabled>📝 Post</button>
+        </div>
+        <div id="postFeed" class="mt-1"></div>
+      </div>
+    </section>
+
+    <!-- MEMBERS -->
+    <section id="page-members" class="page">
+      <div class="card" style="position:relative;">
+        <div class="lock-overlay"><h3>🔒 LOCKED</h3><p>Subscribe to manage the crew.</p></div>
+        <h2>👥 Crew</h2>
+        <ul class="item-list" id="memberList"></ul>
+        <div class="mt-1 flex">
+          <input type="text" id="inviteEmail" placeholder="Invite username" style="flex:2;" disabled />
+          <button class="btn btn-secondary" id="inviteBtn" disabled>➕ Add</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="page-admin" class="page">
+      <div class="card" style="position:relative;">
+        <div class="lock-overlay"><h3>🔒 LOCKED</h3><p>Admin access requires subscription.</p></div>
+        <h2>👑 Admin Dashboard</h2>
+        <div class="admin-grid">
+          <div class="admin-stat"><h4>Total Members</h4><div class="num" id="adminTotalMembers">0</div></div>
+          <div class="admin-stat"><h4>Total Books</h4><div class="num" id="adminTotalBooks">0</div></div>
+          <div class="admin-stat"><h4>Total Posts</h4><div class="num" id="adminTotalPosts">0</div></div>
+          <div class="admin-stat"><h4>Subscribers</h4><div class="num" id="adminSubscribers">0</div></div>
+        </div>
+        <div class="mt-1 flex">
+          <button class="btn btn-secondary" id="exportDataBtn">💾 Export Data</button>
+          <button class="btn btn-danger" id="importDataBtn">📂 Import Data</button>
+          <input type="file" id="importFileInput" accept=".json" style="display:none;" />
+        </div>
+        <div class="mt-1" style="background:#1a1a1a; border:4px solid #333; padding:1rem;">
+          <p class="text-muted">📊 System Status: All data stored locally in your browser.</p>
+          <p class="text-muted">💾 Export creates a full backup. Import restores from a backup file.</p>
+        </div>
+        <div class="mt-1">
+          <h4 style="color:#ffe600;">📈 Reading Progress Overview</h4>
+          <div id="adminProgressOverview"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIBE -->
+    <section id="page-subscribe" class="page">
+      <div class="card">
+        <h2>⭐ UNLOCK THE CLUB</h2>
+        <p style="color:#aaa;">Get full access to voting, RSVP, discussions, and crew management.</p>
+        <div class="grid-2 mt-1">
+          <div class="stat-box" style="border-color:#00b894;">
+            <h3 style="color:#00b894;">$10</h3>
+            <p><strong>Monthly</strong> – Full Access</p>
+            <button class="btn btn-success" data-plan="monthly">Subscribe Monthly</button>
+          </div>
+          <div class="stat-box" style="border-color:#ffe600;">
+            <h3 style="color:#ffe600;">$100</h3>
+            <p><strong>Yearly</strong> – Save 16%</p>
+            <button class="btn btn-success" data-plan="yearly">Subscribe Yearly</button>
+          </div>
+        </div>
+        <div class="mt-1" style="background:#1a1a1a; border:4px solid #ff007f; padding:1rem;">
+          <p><strong>💳 PayPal Subscription</strong> – Click a plan above to subscribe via PayPal.</p>
+          <div id="subscriptionStatus" style="font-weight:700; margin-top:0.5rem; color:#ff007f;">You are not subscribed.</div>
+        </div>
+        <div class="mt-1">
+          <button class="btn btn-danger" id="cancelSubBtn">Cancel Subscription</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MODALS ========== -->
+
+    <!-- Payment Modal with PayPal Button -->
+    <div class="modal-overlay" id="paymentModal">
+      <div class="modal">
+        <button class="close" id="modalClose">&times;</button>
+        <h2 style="font-family:'Yusei Magic',sans-serif; color:#ff007f;">💳 COMPLETE YOUR SUBSCRIPTION</h2>
+        <p style="color:#aaa; margin-bottom:1rem;">Secure checkout via PayPal</p>
+        <div id="paypal-button-container-P-4SJ899847P047893RNIY3KHI"></div>
+        <p style="font-size:0.8rem; margin-top:1rem; color:#666;">You will be redirected to PayPal to complete your subscription.</p>
+        <!-- Hidden field to store selected plan (monthly/yearly) -->
+        <input type="hidden" id="selectedPlan" value="monthly" />
+      </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+      <div class="modal">
+        <button class="close" id="profileModalClose">&times;</button>
+        <h2 style="font-family:'Yusei Magic',sans-serif; color:#ffe600;" id="profileName">👤 User</h2>
+        <div id="profileContent" style="margin-top:1rem;"></div>
+      </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal-overlay" id="replyModal">
+      <div class="modal">
+        <button class="close" id="replyModalClose">&times;</button>
+        <h2 style="font-family:'Yusei Magic',sans-serif; color:#ff007f;">💬 Reply to Post</h2>
+        <textarea id="replyContent" placeholder="Write your reply..." style="width:100%; min-height:80px; margin:1rem 0;"></textarea>
+        <button class="btn btn-success" id="submitReplyBtn">Submit Reply</button>
+        <input type="hidden" id="replyPostId" value="" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== PAYPAL SDK ========== -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AZ9PGqfwfBFyHG_XK-wBvAfw2r-m6CkFWjQaEkI_NRDN76vf4g6EbfkM1rWXpyYnZGUej1KNKGxjWT3G&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+
+  <script>
+    // ================================================================
+    //  DATA LAYER
+    // ================================================================
+    const DB = {
+      get(key, fallback) {
+        try { const d = localStorage.getItem('bc_' + key); return d ? JSON.parse(d) : fallback; } catch { return fallback; }
+      },
+      set(key, val) { localStorage.setItem('bc_' + key, JSON.stringify(val)); }
+    };
+
+    function initData() {
+      if (!localStorage.getItem('bc_initialized')) {
+        const now = new Date().toISOString();
+        const nextWeek = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+        DB.set('books', [
+          { id: 1, title: 'Berserk Deluxe Vol.1', author: 'Kentaro Miura', chapters: 20, votes: 5, rating: 0, ratings: [] },
+          { id: 2, title: 'Chainsaw Man Vol.1', author: 'Tatsuki Fujimoto', chapters: 12, votes: 8, rating: 0, ratings: [] },
+          { id: 3, title: 'One Piece Vol.100', author: 'Eiichiro Oda', chapters: 15, votes: 12, rating: 0, ratings: [] }
+        ]);
+        DB.set('meetings', [
+          { id: 1, title: 'Kickoff – Chainsaw Man', time: now, rsvps: ['alice'] },
+          { id: 2, title: 'Midway – Berserk', time: nextWeek, rsvps: [] }
+        ]);
+        DB.set('posts', [
+          { id: 1, author: 'alice', content: 'Just finished chapter 3 of CSM – mind blown!', time: now, replies: [] }
+        ]);
+        DB.set('members', [
+          { name: 'alice', subscribed: true, admin: true, progress: {} },
+          { name: 'bob', subscribed: false, admin: false, progress: {} }
+        ]);
+        DB.set('currentUser', 'alice');
+        DB.set('notifications', []);
+        DB.set('nextId', { book: 4, meeting: 3, post: 2, reply: 1 });
+        localStorage.setItem('bc_initialized', 'true');
+      }
+    }
+    initData();
+
+    // --- helpers ---
+    function getBooks() { return DB.get('books', []); }
+
+    function setBooks(b) { DB.set('books', b); }
+
+    function getMeetings() { return DB.get('meetings', []); }
+
+    function setMeetings(m) { DB.set('meetings', m); }
+
+    function getPosts() { return DB.get('posts', []); }
+
+    function setPosts(p) { DB.set('posts', p); }
+
+    function getMembers() { return DB.get('members', []); }
+
+    function setMembers(m) { DB.set('members', m); }
+
+    function getCurrentUser() { return DB.get('currentUser', null); }
+
+    function setCurrentUser(u) { DB.set('currentUser', u); }
+
+    function getNotifications() { return DB.get('notifications', []); }
+
+    function setNotifications(n) { DB.set('notifications', n); }
+
+    function getNextId(key) { const d = DB.get('nextId', { book: 1, meeting: 1, post: 1, reply: 1 }); return d[key] || 1; }
+
+    function setNextId(key, val) { const d = DB.get('nextId', { book: 1, meeting: 1, post: 1, reply: 1 });
+      d[key] = val;
+      DB.set('nextId', d); }
+
+    function findMember(name) { return getMembers().find(m => m.name.toLowerCase() === name.toLowerCase()); }
+
+    function isAdmin() { const u = getCurrentUser(); if (!u) return false; const m = findMember(u); return m ? m.admin === true : false; }
+
+    function isSubscribed() {
+      const u = getCurrentUser();
+      if (!u) return false;
+      const m = findMember(u);
+      return m ? m.subscribed === true : false;
+    }
+
+    function isAgeVerified() { return localStorage.getItem('ageVerified') === 'true'; }
+
+    function addNotification(msg) {
+      const notifs = getNotifications();
+      notifs.unshift({ msg, time: new Date().toISOString(), read: false });
+      if (notifs.length > 50) notifs.pop();
+      setNotifications(notifs);
+    }
+
+    function getUnreadCount() { return getNotifications().filter(n => !n.read).length; }
+
+    function markAllRead() {
+      const notifs = getNotifications();
+      notifs.forEach(n => n.read = true);
+      setNotifications(notifs);
+    }
+
+    // ================================================================
+    //  RENDER FUNCTIONS
+    // ================================================================
+
+    function renderAll() {
+      renderBooks();
+      renderMeetings();
+      renderPosts();
+      renderMembers();
+      renderStats();
+      renderSubscriptionStatus();
+      renderHomePreview();
+      renderAdminDashboard();
+      renderNotifications();
+      updateUserBadge();
+      updateNavLock();
+    }
+
+    function renderBooks() {
+      const list = document.getElementById('bookList');
+      const books = getBooks();
+      const user = getCurrentUser();
+      const subbed = isSubscribed();
+      const member = user ? findMember(user) : null;
+      const progress = member ? member.progress || {} : {};
+
+      list.innerHTML = books.map(b => {
+        const pct = b.chapters ? Math.min(100, Math.round(((progress[b.id] || 0) / b.chapters) * 100)) : 0;
+        const avgRating = b.ratings && b.ratings.length ? (b.ratings.reduce((a, r) => a + r, 0) / b.ratings.length) : 0;
+        return `
+          <li>
+            <div style="flex:1;min-width:200px;">
+              <strong>${b.title}</strong> by ${b.author}
+              <span class="tag">${b.votes || 0} votes</span>
+              <span class="tag" style="border-color:#ffe600;color:#ffe600;">⭐ ${avgRating > 0 ? avgRating.toFixed(1) : '—'}</span>
+              ${b.chapters ? `<span class="meta">${b.chapters} ch</span>` : ''}
+              ${subbed && b.chapters ? `
+                <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
+                <span class="text-muted" style="font-size:0.7rem;">${Math.round(pct)}% read (${progress[b.id] || 0}/${b.chapters})</span>
+              ` : ''}
+            </div>
+            <div class="small-actions">
+              ${subbed && user ? `
+                <button class="btn btn-secondary btn-sm" onclick="voteBook(${b.id})">👍 Vote</button>
+                ${b.chapters ? `<button class="btn btn-secondary btn-sm" onclick="updateProgress(${b.id}, 1)">📈 +1</button>` : ''}
+                <div class="stars" data-book="${b.id}">
+                  ${[1,2,3,4,5].map(s => `<span class="star ${s <= Math.round(avgRating) ? 'active' : ''}" onclick="rateBook(${b.id}, ${s})">★</span>`).join('')}
+                </div>
+              ` : ''}
+              ${subbed && isAdmin() ? `<button class="btn btn-danger btn-sm" onclick="deleteBook(${b.id})">✖</button>` : ''}
+            </div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    function renderMeetings() {
+      const list = document.getElementById('meetingList');
+      const meetings = getMeetings();
+      const user = getCurrentUser();
+      const subbed = isSubscribed();
+      list.innerHTML = meetings.map(m => {
+        const isRsvpd = user ? m.rsvps && m.rsvps.some(r => r.toLowerCase() === user.toLowerCase()) : false;
+        const count = (m.rsvps || []).length;
+        return `
+          <li>
+            <span><strong>${m.title}</strong><br><span class="meta">${new Date(m.time).toLocaleString()} · ${count} attending</span></span>
+            <span>
+              ${subbed && user ? (isRsvpd ? `<span class="tag paid">✅ RSVP'd</span>` : `<button class="btn btn-secondary btn-sm" onclick="rsvpMeeting(${m.id})">RSVP</button>`) : ''}
+              ${subbed && isAdmin() ? `<button class="btn btn-danger btn-sm" onclick="deleteMeeting(${m.id})">✖</button>` : ''}
+            </span>
+          </li>
+        `;
+      }).join('');
+    }
+
+    function renderPosts() {
+      const feed = document.getElementById('postFeed');
+      const posts = getPosts();
+      const user = getCurrentUser();
+      const subbed = isSubscribed();
+
+      feed.innerHTML = posts.slice().reverse().map(p => {
+        const replies = p.replies || [];
+        return `
+          <div class="post">
+            <span class="author" onclick="viewProfile('${p.author}')">${p.author}</span><span class="time">${new Date(p.time).toLocaleString()}</span>
+            <div class="content">${p.content}</div>
+            <div class="post-actions">
+              ${subbed && user ? `<button onclick="openReplyModal(${p.id})">💬 Reply</button>` : ''}
+              <span class="text-muted">${replies.length} replies</span>
+            </div>
+            ${replies.length ? `<div class="replies">${replies.map(r => `
+              <div class="reply">
+                <span class="author" onclick="viewProfile('${r.author}')">${r.author}</span> <span class="time">${new Date(r.time).toLocaleString()}</span>
+                <div class="content">${r.content}</div>
+              </div>
+            `).join('')}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderMembers() {
+      const list = document.getElementById('memberList');
+      const members = getMembers();
+      const user = getCurrentUser();
+      const subbed = isSubscribed();
+      list.innerHTML = members.map(m => `
+        <li>
+          <span>
+            <strong onclick="viewProfile('${m.name}')" style="cursor:pointer;">${m.name}</strong>
+            ${m.admin ? '👑' : ''}
+            ${m.subscribed ? '<span class="tag paid">Subscribed</span>' : '<span class="tag free">Free</span>'}
+            <span class="meta">${Object.keys(m.progress || {}).length} books reading</span>
+          </span>
+          <span>
+            ${subbed && isAdmin() && m.name !== user ? `<button class="btn btn-danger btn-sm" onclick="removeMember('${m.name}')">Remove</button>` : ''}
+          </span>
+        </li>
+      `).join('');
+    }
+
+    function renderStats() {
+      document.getElementById('statMembers').textContent = getMembers().length;
+      document.getElementById('statBooks').textContent = getBooks().length;
+      document.getElementById('statMeetings').textContent = getMeetings().filter(m => new Date(m.time) > new Date()).length;
+      document.getElementById('statPosts').textContent = getPosts().length;
+    }
+
+    function renderHomePreview() {
+      const list = document.getElementById('homeBookPreview');
+      const books = getBooks().slice(0, 3);
+      list.innerHTML = books.map(b => `
+        <li>
+          <span><strong>${b.title}</strong> by ${b.author} <span class="tag">${b.votes} votes</span></span>
+          <span>${isSubscribed() ? '✅ Access granted' : '🔒 Subscribe to vote'}</span>
+        </li>
+      `).join('');
+    }
+
+    function renderSubscriptionStatus() {
+      const user = getCurrentUser();
+      const el = document.getElementById('subscriptionStatus');
+      if (!user) { el.textContent = 'Please login to subscribe.'; return; }
+      const m = findMember(user);
+      if (m && m.subscribed) {
+        el.innerHTML = '✅ You are <strong style="color:#00b894;">subscribed</strong> – full access unlocked!';
+      } else {
+        el.innerHTML = '❌ You are not subscribed. Unlock all features now!';
+      }
+    }
+
+    function renderAdminDashboard() {
+      const members = getMembers();
+      const books = getBooks();
+      const posts = getPosts();
+      document.getElementById('adminTotalMembers').textContent = members.length;
+      document.getElementById('adminTotalBooks').textContent = books.length;
+      document.getElementById('adminTotalPosts').textContent = posts.length;
+      document.getElementById('adminSubscribers').textContent = members.filter(m => m.subscribed).length;
+
+      const overview = document.getElementById('adminProgressOverview');
+      const allProgress = {};
+      members.forEach(m => {
+        if (m.progress) {
+          Object.keys(m.progress).forEach(bid => {
+            if (!allProgress[bid]) allProgress[bid] = [];
+            allProgress[bid].push({ name: m.name, pct: m.progress[bid] });
+          });
+        }
+      });
+      let html = '';
+      books.forEach(b => {
+        if (allProgress[b.id]) {
+          const max = Math.max(...allProgress[b.id].map(x => x.pct));
+          const topReader = allProgress[b.id].find(x => x.pct === max);
+          html +=
+            `<div style="background:#1a1a1a;border:2px solid #333;padding:0.5rem;margin-bottom:0.5rem;">
+              <strong>${b.title}</strong> — <span class="text-muted">${allProgress[b.id].length} readers</span>
+              <span class="tag gold">👑 ${topReader ? topReader.name : ''} (${max}/${b.chapters || '?'})</span>
+            </div>`;
+        }
+      });
+      overview.innerHTML = html || '<p class="text-muted">No reading progress yet.</p>';
+    }
+
+    function renderNotifications() {
+      const notifs = getNotifications();
+      const count = getUnreadCount();
+      document.getElementById('notifCount').textContent = count;
+      const dropdown = document.getElementById('notifDropdown');
+      dropdown.innerHTML = notifs.length ? notifs.map(n => `
+        <div class="notif-item" style="${n.read ? 'opacity:0.6;' : ''}">
+          ${n.msg}
+          <div class="notif-time">${new Date(n.time).toLocaleString()}</div>
+        </div>
+      `).join('') : '<div class="notif-item" style="color:#666;">No notifications</div>';
+    }
+
+    function updateUserBadge() {
+      const u = getCurrentUser();
+      document.getElementById('userDisplay').textContent = u || 'Guest';
+      document.getElementById('loginToggle').textContent = u ? 'Logout' : 'Login';
+    }
+
+    function updateNavLock() {
+      const subbed = isSubscribed();
+      const lockedNavs = ['navBooks', 'navMeetings', 'navCommunity', 'navMembers', 'navAdmin'];
+      lockedNavs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (subbed) {
+            el.classList.remove('locked');
+            el.style.pointerEvents = 'auto';
+            el.style.opacity = '1';
+          } else {
+            el.classList.add('locked');
+            el.style.pointerEvents = 'none';
+            el.style.opacity = '0.4';
+          }
+        }
+      });
+      const activePage = document.querySelector('.page.active');
+      if (activePage) {
+        const id = activePage.id;
+        if (!subbed && id !== 'page-home' && id !== 'page-subscribe') {
+          document.querySelector('#mainNav button[data-page="home"]').click();
+        }
+      }
+    }
+
+    // ================================================================
+    //  ACTIONS
+    // ================================================================
+
+    function requireSubscription() {
+      if (!isSubscribed()) {
+        alert('🔞 This feature requires a paid subscription. Click "Subscribe" to unlock full access.');
+        return false;
+      }
+      return true;
+    }
+
+    window.voteBook = function(id) {
+      if (!requireSubscription()) return;
+      const books = getBooks();
+      const b = books.find(x => x.id === id);
+      if (b) { b.votes = (b.votes || 0) + 1;
+        setBooks(books);
+        addNotification(`${getCurrentUser()} voted for "${b.title}"`);
+        renderAll(); }
+    };
+
+    window.rateBook = function(id, stars) {
+      if (!requireSubscription()) return;
+      const books = getBooks();
+      const b = books.find(x => x.id === id);
+      if (b) {
+        if (!b.ratings) b.ratings = [];
+        b.ratings.push(stars);
+        setBooks(books);
+        addNotification(`${getCurrentUser()} rated "${b.title}" ${stars}⭐`);
+        renderAll();
+      }
+    };
+
+    window.updateProgress = function(id, delta) {
+      if (!requireSubscription()) return;
+      const user = getCurrentUser();
+      if (!user) return;
+      const members = getMembers();
+      const m = members.find(x => x.name.toLowerCase() === user.toLowerCase());
+      if (!m) return;
+      if (!m.progress) m.progress = {};
+      const books = getBooks();
+      const b = books.find(x => x.id === id);
+      if (!b) return;
+      m.progress[id] = Math.min(b.chapters || 999, (m.progress[id] || 0) + delta);
+      setMembers(members);
+      addNotification(`${user} progressed on "${b.title}" (${m.progress[id]}/${b.chapters})`);
+      renderAll();
+    };
+
+    window.deleteBook = function(id) {
+      if (!requireSubscription() || !isAdmin()) return;
+      setBooks(getBooks().filter(b => b.id !== id));
+      renderAll();
+    };
+
+    document.getElementById('addBookBtn').addEventListener('click', function() {
+      if (!requireSubscription()) return;
+      const title = document.getElementById('bookTitle').value.trim();
+      const author = document.getElementById('bookAuthor').value.trim();
+      const chapters = parseInt(document.getElementById('bookChapters').value) || 0;
+      if (!title || !author) return alert('Enter both title and mangaka.');
+      const books = getBooks();
+      const newId = getNextId('book');
+      books.push({ id: newId, title, author, chapters, votes: 0, rating: 0, ratings: [] });
+      setBooks(books);
+      setNextId('book', newId + 1);
+      document.getElementById('bookTitle').value = '';
+      document.getElementById('bookAuthor').value = '';
+      document.getElementById('bookChapters').value = '';
+      addNotification(`New book added: "${title}"`);
+      renderAll();
+    });
+
+    window.rsvpMeeting = function(id) {
+      if (!requireSubscription()) return;
+      const user = getCurrentUser();
+      if (!user) return alert('Please login first.');
+      const meetings = getMeetings();
+      const m = meetings.find(x => x.id === id);
+      if (m) {
+        if (!m.rsvps) m.rsvps = [];
+        if (!m.rsvps.some(r => r.toLowerCase() === user.toLowerCase())) {
+          m.rsvps.push(user);
+          setMeetings(meetings);
+          addNotification(`${user} RSVP'd for "${m.title}"`);
+          renderAll();
+        }
+      }
+    };
+
+    window.deleteMeeting = function(id) {
+      if (!requireSubscription() || !isAdmin()) return;
+      setMeetings(getMeetings().filter(m => m.id !== id));
+      renderAll();
+    };
+
+    document.getElementById('addMeetingBtn').addEventListener('click', function() {
+      if (!requireSubscription()) return;
+      const title = document.getElementById('meetingTitle').value.trim();
+      const time = document.getElementById('meetingTime').value;
+      if (!title || !time) return alert('Enter title and time.');
+      const meetings = getMeetings();
+      const newId = getNextId('meeting');
+      meetings.push({ id: newId, title, time, rsvps: [] });
+      setMeetings(meetings);
+      setNextId('meeting', newId + 1);
+      document.getElementById('meetingTitle').value = '';
+      document.getElementById('meetingTime').value = '';
+      addNotification(`New meeting scheduled: "${title}"`);
+      renderAll();
+    });
+
+    document.getElementById('addPostBtn').addEventListener('click', function() {
+      if (!requireSubscription()) return;
+      const user = getCurrentUser();
+      if (!user) return alert('Please login first.');
+      const content = document.getElementById('postContent').value.trim();
+      if (!content) return;
+      const posts = getPosts();
+      const newId = getNextId('post');
+      posts.push({ id: newId, author: user, content, time: new Date().toISOString(), replies: [] });
+      setPosts(posts);
+      setNextId('post', newId + 1);
+      document.getElementById('postContent').value = '';
+      addNotification(`${user} posted a new discussion`);
+      renderAll();
+    });
+
+    window.removeMember = function(name) {
+      if (!requireSubscription() || !isAdmin()) return;
+      if (name === getCurrentUser()) return alert('You cannot remove yourself.');
+      if (!confirm(`Remove ${name} from the crew?`)) return;
+      setMembers(getMembers().filter(m => m.name.toLowerCase() !== name.toLowerCase()));
+      renderAll();
+    };
+
+    document.getElementById('inviteBtn').addEventListener('click', function() {
+      if (!requireSubscription()) return;
+      const name = document.getElementById('inviteEmail').value.trim();
+      if (!name) return;
+      const members = getMembers();
+      if (members.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+        return alert('Member already exists.');
+      }
+      members.push({ name, subscribed: false, admin: false, progress: {} });
+      setMembers(members);
+      document.getElementById('inviteEmail').value = '';
+      addNotification(`${name} was invited to the club`);
+      renderAll();
+    });
+
+    // --- Login / Logout ---
+    document.getElementById('loginToggle').addEventListener('click', function() {
+      const current = getCurrentUser();
+      if (current) {
+        setCurrentUser(null);
+        renderAll();
+        return;
+      }
+      const name = prompt('Enter your username:');
+      if (!name) return;
+      const members = getMembers();
+      let member = members.find(m => m.name.toLowerCase() === name.toLowerCase());
+      if (!member) {
+        member = { name: name.trim(), subscribed: false, admin: members.length === 0 ? true : false, progress: {} };
+        members.push(member);
+        setMembers(members);
+      }
+      setCurrentUser(member.name);
+      addNotification(`${member.name} logged in`);
+      renderAll();
+    });
+
+    // --- Profile View ---
+    window.viewProfile = function(name) {
+      const member = findMember(name);
+      if (!member) return;
+      document.getElementById('profileName').textContent = `👤 ${member.name}${member.admin ? ' 👑' : ''}`;
+      const books = getBooks();
+      const progress = member.progress || {};
+      let html = `
+        <p><strong>Status:</strong> ${member.subscribed ? '✅ Subscribed' : '❌ Free'}</p>
+        <p><strong>Reading Progress:</strong></p>
+        <ul style="list-style:none;padding:0;">
+      `;
+      books.forEach(b => {
+        const pct = progress[b.id] || 0;
+        const total = b.chapters || 1;
+        html += `
+          <li style="background:#222;padding:0.3rem 0.6rem;margin-bottom:0.3rem;border:2px solid #333;">
+            <strong>${b.title}</strong> — ${Math.min(100, Math.round((pct/total)*100))}% (${pct}/${total})
+            <div class="progress-wrap"><div class="progress-bar" style="width:${Math.min(100, Math.round((pct/total)*100))}%"></div></div>
+          </li>
+        `;
+      });
+      html += '</ul>';
+      document.getElementById('profileContent').innerHTML = html;
+      document.getElementById('profileModal').classList.add('open');
+    };
+
+    document.getElementById('profileModalClose').addEventListener('click', function() {
+      document.getElementById('profileModal').classList.remove('open');
+    });
+    document.getElementById('profileModal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    // --- Reply System ---
+    window.openReplyModal = function(postId) {
+      if (!requireSubscription()) return;
+      document.getElementById('replyPostId').value = postId;
+      document.getElementById('replyContent').value = '';
+      document.getElementById('replyModal').classList.add('open');
+    };
+
+    document.getElementById('replyModalClose').addEventListener('click', function() {
+      document.getElementById('replyModal').classList.remove('open');
+    });
+    document.getElementById('replyModal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    document.getElementById('submitReplyBtn').addEventListener('click', function() {
+      if (!requireSubscription()) return;
+      const user = getCurrentUser();
+      if (!user) return alert('Please login.');
+      const postId = parseInt(document.getElementById('replyPostId').value);
+      const content = document.getElementById('replyContent').value.trim();
+      if (!content) return alert('Write a reply.');
+      const posts = getPosts();
+      const post = posts.find(p => p.id === postId);
+      if (post) {
+        if (!post.replies) post.replies = [];
+        const newId = getNextId('reply');
+        post.replies.push({ id: newId, author: user, content, time: new Date().toISOString() });
+        setPosts(posts);
+        setNextId('reply', newId + 1);
+        addNotification(`${user} replied to a discussion`);
+        document.getElementById('replyModal').classList.remove('open');
+        renderAll();
+      }
+    });
+
+    // --- Search ---
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!query) return;
+      const books = getBooks().filter(b => b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query));
+      const posts = getPosts().filter(p => p.content.toLowerCase().includes(query));
+      const members = getMembers().filter(m => m.name.toLowerCase().includes(query));
+
+      let result = '🔍 Search Results:\n\n';
+      if (books.length) result += `📚 Books: ${books.map(b => b.title).join(', ')}\n`;
+      if (posts.length) result += `💬 Posts: ${posts.map(p => p.content.slice(0, 40)).join(', ')}\n`;
+      if (members.length) result += `👥 Members: ${members.map(m => m.name).join(', ')}\n`;
+      if (!books.length && !posts.length && !members.length) result += 'No results found.';
+      alert(result);
+    });
+
+    document.getElementById('searchInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') document.getElementById('searchBtn').click();
+    });
+
+    // --- Notifications ---
+    document.getElementById('notifBell').addEventListener('click', function() {
+      const dropdown = document.getElementById('notifDropdown');
+      dropdown.classList.toggle('open');
+      if (dropdown.classList.contains('open')) {
+        markAllRead();
+        renderNotifications();
+      }
+    });
+
+    // --- Export / Import Data ---
+    document.getElementById('exportDataBtn').addEventListener('click', function() {
+      if (!isAdmin()) return alert('Admin only.');
+      const data = {
+        books: getBooks(),
+        meetings: getMeetings(),
+        posts: getPosts(),
+        members: getMembers(),
+        notifications: getNotifications(),
+        nextId: DB.get('nextId', { book: 1, meeting: 1, post: 1, reply: 1 }),
+        exportedAt: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `manga_club_backup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      addNotification('Data exported successfully');
+    });
+
+    document.getElementById('importDataBtn').addEventListener('click', function() {
+      if (!isAdmin()) return alert('Admin only.');
+      document.getElementById('importFileInput').click();
+    });
+
+    document.getElementById('importFileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.books) { setBooks(data.books); }
+          if (data.meetings) { setMeetings(data.meetings); }
+          if (data.posts) { setPosts(data.posts); }
+          if (data.members) { setMembers(data.members); }
+          if (data.notifications) { setNotifications(data.notifications); }
+          if (data.nextId) { DB.set('nextId', data.nextId); }
+          localStorage.setItem('bc_initialized', 'true');
+          addNotification('Data imported successfully');
+          renderAll();
+          alert('✅ Import successful!');
+        } catch (err) {
+          alert('❌ Invalid file format.');
+        }
+      };
+      reader.readAsText(file);
+      this.value = '';
+    });
+
+    // --- PayPal Integration ---
+    let paypalRendered = false;
+
+    function renderPayPalButton() {
+      const container = document.getElementById('paypal-button-container-P-4SJ899847P047893RNIY3KHI');
+      if (!container) return;
+      // Clear container to avoid duplicate buttons
+      container.innerHTML = '';
+      if (typeof paypal === 'undefined') {
+        container.innerHTML = '<p style="color:#ff007f;">PayPal SDK not loaded. Please refresh.</p>';
+        return;
+      }
+      try {
+        paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'subscribe'
+          },
+          createSubscription: function(data, actions) {
+            return actions.subscription.create({
+              plan_id: 'P-4SJ899847P047893RNIY3KHI',
+              quantity: 1
+            });
+          },
+          onApprove: function(data, actions) {
+            // User subscribed successfully
+            const user = getCurrentUser();
+            if (!user) {
+              alert('Please login first before subscribing.');
+              return;
+            }
+            const members = getMembers();
+            const m = members.find(x => x.name.toLowerCase() === user.toLowerCase());
+            if (m) {
+              m.subscribed = true;
+              setMembers(members);
+              addNotification(`${user} subscribed via PayPal (ID: ${data.subscriptionID})`);
+              renderAll();
+              document.getElementById('paymentModal').classList.remove('open');
+              alert(`✅ Subscription successful! Your subscription ID: ${data.subscriptionID}\nFull access unlocked.`);
+            } else {
+              alert('User not found. Please login again.');
+            }
+          },
+          onError: function(err) {
+            console.error('PayPal Error:', err);
+            alert('There was an error with PayPal. Please try again.');
+          }
+        }).render(container);
+        paypalRendered = true;
+      } catch (e) {
+        console.error('PayPal render error:', e);
+        container.innerHTML = '<p style="color:#ff007f;">Error loading PayPal button. Please refresh.</p>';
+      }
+    }
+
+    // --- Subscription plan buttons ---
+    document.querySelectorAll('[data-plan]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const plan = this.dataset.plan;
+        // Store the plan in a hidden field for reference
+        document.getElementById('selectedPlan').value = plan;
+        // Open the payment modal, which will render the PayPal button
+        document.getElementById('paymentModal').classList.add('open');
+        // Render PayPal button if not already rendered, or re-render to be safe
+        // We'll render each time the modal opens to ensure freshness.
+        // But we must ensure container is empty.
+        renderPayPalButton();
+      });
+    });
+
+    // Close modal handlers
+    document.getElementById('modalClose').addEventListener('click', function() {
+      document.getElementById('paymentModal').classList.remove('open');
+    });
+    document.getElementById('paymentModal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    // --- Cancel Subscription ---
+    document.getElementById('cancelSubBtn').addEventListener('click', function() {
+      const user = getCurrentUser();
+      if (!user) return alert('Login first.');
+      const members = getMembers();
+      const m = members.find(x => x.name.toLowerCase() === user.toLowerCase());
+      if (m && m.subscribed) {
+        if (confirm('Cancel your subscription? You will lose access.')) {
+          m.subscribed = false;
+          setMembers(members);
+          addNotification(`${user} cancelled subscription`);
+          renderAll();
+          alert('Subscription cancelled.');
+        }
+      } else {
+        alert('You are not subscribed.');
+      }
+    });
+
+    // --- Navigation ---
+    document.querySelectorAll('#mainNav button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const page = this.dataset.page;
+        if (!isSubscribed() && page !== 'home' && page !== 'subscribe') {
+          alert('🔞 Subscribe to access this area.');
+          return;
+        }
+        document.querySelectorAll('#mainNav button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-' + page).classList.add('active');
+      });
+    });
+
+    // --- AGE GATE ---
+    document.getElementById('ageConfirm').addEventListener('click', function() {
+      localStorage.setItem('ageVerified', 'true');
+      document.getElementById('ageGate').classList.add('hidden');
+      document.getElementById('mainApp').style.display = 'block';
+      renderAll();
+    });
+    document.getElementById('ageDeny').addEventListener('click', function() {
+      document.body.innerHTML =
+        '<div style="text-align:center;padding:4rem;color:#ff007f;font-size:3rem;font-family:\'Yusei Magic\',sans-serif;">🔞 ACCESS DENIED<br><span style="font-size:1rem;color:#666;">You must be 21+ to enter this site.</span></div>';
+    });
+
+    // --- Init ---
+    if (isAgeVerified()) {
+      document.getElementById('ageGate').classList.add('hidden');
+      document.getElementById('mainApp').style.display = 'block';
+      renderAll();
+    } else {
+      document.getElementById('mainApp').style.display = 'none';
+    }
+
+    // Pre-render PayPal button if modal is initially open? Not needed.
+    // But we may want to preload it. We'll render when the modal opens.
+  </script>
+</body>
+</html>
